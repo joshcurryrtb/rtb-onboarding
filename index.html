@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RTB Gym — 21-Day Strength Reset Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #FF0028;
+  --black: #111;
+  --white: #fff;
+  --grey-light: #f5f5f5;
+  --grey-mid: #e0e0e0;
+  --grey-text: #666;
+  --radius: 12px;
+}
+
+html, body {
+  font-family: 'Epilogue', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--red);
+  transition: width 0.4s ease;
+  z-index: 100;
+}
+
+/* ── CONTAINER ── */
+.form-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align: center;
+  padding: 20px 0 10px;
+}
+.header img {
+  height: 36px;
+  margin-bottom: 8px;
+}
+.header-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey-text);
+}
+
+/* ── STEPS ── */
+.step {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  animation: fadeUp 0.35s ease;
+}
+.step.active {
+  display: flex;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-question {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(26px, 6vw, 34px);
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin: 24px 0 8px;
+}
+
+.step-sub {
+  font-size: 15px;
+  color: var(--grey-text);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* ── INPUTS ── */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 16px 18px;
+  border: 2px solid var(--grey-mid);
+  border-radius: var(--radius);
+  background: var(--grey-light);
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--red);
+}
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+input::placeholder, textarea::placeholder {
+  color: #bbb;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+.input-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--grey-text);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ── CHECKBOX / RADIO CARDS ── */
+.option-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 2px solid var(--grey-mid);
+  border-radius: var(--radius);
+  background: var(--grey-light);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-size: 16px;
+  font-weight: 600;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.option-card:hover {
+  border-color: #ccc;
+}
+.option-card.selected {
+  border-color: var(--red);
+  background: #fff0f2;
+}
+.option-card input {
+  display: none;
+}
+.option-check {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--grey-mid);
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.option-card.selected .option-check {
+  background: var(--red);
+  border-color: var(--red);
+}
+.option-card.selected .option-check::after {
+  content: '';
+  width: 10px;
+  height: 6px;
+  border-left: 2.5px solid white;
+  border-bottom: 2.5px solid white;
+  transform: rotate(-45deg) translateY(-1px);
+}
+.radio-check {
+  border-radius: 50%;
+}
+.option-card.selected .radio-check {
+  background: var(--red);
+  border-color: var(--red);
+}
+.option-card.selected .radio-check::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* ── LIFT INPUT ROW ── */
+.lift-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.lift-row label {
+  font-weight: 700;
+  font-size: 15px;
+  min-width: 90px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.lift-row input {
+  flex: 1;
+  text-align: center;
+}
+.lift-row .unit {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--grey-text);
+}
+
+/* ── BUTTONS ── */
+.btn-row {
+  margin-top: auto;
+  padding: 20px 0 30px;
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  flex: 1;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary {
+  background: var(--red);
+  color: white;
+}
+.btn-primary:hover {
+  background: #e00020;
+}
+.btn-primary:disabled {
+  background: #ddd;
+  color: #aaa;
+  cursor: not-allowed;
+}
+.btn-back {
+  background: var(--grey-light);
+  color: var(--grey-text);
+  flex: 0 0 auto;
+  padding: 16px 20px;
+}
+.btn-back:hover {
+  background: var(--grey-mid);
+}
+
+/* ── THANK YOU SCREEN ── */
+.thankyou {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.thankyou-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.thankyou-icon svg {
+  width: 36px;
+  height: 36px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+}
+.thankyou h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+.thankyou p {
+  font-size: 16px;
+  color: var(--grey-text);
+  line-height: 1.6;
+  max-width: 340px;
+}
+.app-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+.app-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-radius: 50px;
+  background: var(--black);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+.app-link:hover {
+  background: #333;
+}
+.app-link svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+  flex-shrink: 0;
+}
+.note-box {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--grey-light);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--red);
+  text-align: left;
+  max-width: 340px;
+}
+.note-box p {
+  font-size: 14px;
+  color: var(--black);
+  line-height: 1.5;
+}
+.note-box strong {
+  font-weight: 700;
+}
+
+/* ── SKIP LINK ── */
+.skip-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--grey-text);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+/* ── LOCATION PILLS ── */
+.location-pills {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.location-pill {
+  flex: 1;
+  padding: 18px 16px;
+  border: 2px solid var(--grey-mid);
+  border-radius: var(--radius);
+  background: var(--grey-light);
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.location-pill.selected {
+  border-color: var(--red);
+  background: #fff0f2;
+  color: var(--red);
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="form-container">
+
+  <div class="header">
+    <div class="header-title">21-Day Strength Reset</div>
+  </div>
+
+  <!-- STEP 1: Name -->
+  <div class="step active" data-step="1">
+    <div class="step-question">What's your first name?</div>
+    <div class="step-sub">So we know what to call you.</div>
+    <div class="input-group">
+      <input type="text" id="firstName" placeholder="Your first name" autocomplete="given-name">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="nextStep()" id="btn1">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: Email -->
+  <div class="step" data-step="2">
+    <div class="step-question">What's your email?</div>
+    <div class="step-sub">We use this to link your account and track your progress.</div>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="nextStep()" id="btn2">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Location -->
+  <div class="step" data-step="3">
+    <div class="step-question">Which gym are you joining?</div>
+    <div class="step-sub">Select your location.</div>
+    <div class="location-pills">
+      <div class="location-pill" onclick="selectLocation(this, 'Windsor')">Windsor</div>
+      <div class="location-pill" onclick="selectLocation(this, 'Chelsea Heights')">Chelsea Heights</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="nextStep()" id="btn3" disabled>Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: Goals -->
+  <div class="step" data-step="4">
+    <div class="step-question">What are your goals?</div>
+    <div class="step-sub">Pick as many as you like.</div>
+    <div class="option-grid" id="goalsGrid">
+      <div class="option-card" data-value="Lose body fat" onclick="toggleGoal(this)">
+        <span class="option-check"></span>
+        Lose body fat
+      </div>
+      <div class="option-card" data-value="Build muscle" onclick="toggleGoal(this)">
+        <span class="option-check"></span>
+        Build muscle
+      </div>
+      <div class="option-card" data-value="Get stronger" onclick="toggleGoal(this)">
+        <span class="option-check"></span>
+        Get stronger
+      </div>
+      <div class="option-card" data-value="Improve fitness" onclick="toggleGoal(this)">
+        <span class="option-check"></span>
+        Improve general fitness
+      </div>
+      <div class="option-card" data-value="Feel more confident" onclick="toggleGoal(this)">
+        <span class="option-check"></span>
+        Feel more confident
+      </div>
+      <div class="option-card" data-value="Improve mental health" onclick="toggleGoal(this)">
+        <span class="option-check"></span>
+        Improve mental health
+      </div>
+      <div class="option-card" data-value="Sport performance" onclick="toggleGoal(this)">
+        <span class="option-check"></span>
+        Sport performance
+      </div>
+    </div>
+    <div class="input-group">
+      <input type="text" id="goalOther" placeholder="Anything else? (optional)">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: Injuries -->
+  <div class="step" data-step="5">
+    <div class="step-question">Any injuries or limitations?</div>
+    <div class="step-sub">Tell us about anything we should know — past or present. This helps your coach program safely for you.</div>
+    <div class="input-group">
+      <textarea id="injuries" placeholder="E.g. bad lower back, knee surgery 2 years ago, shoulder issues..."></textarea>
+    </div>
+    <button class="skip-link" onclick="document.getElementById('injuries').value='None'; nextStep();">No injuries — skip</button>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: Training history -->
+  <div class="step" data-step="6">
+    <div class="step-question">What's your training background?</div>
+    <div class="step-sub">Select the option that best describes you.</div>
+    <div class="option-grid" id="experienceGrid">
+      <label class="option-card" onclick="selectRadio(this, 'experienceGrid')">
+        <input type="radio" name="experience" value="Complete beginner">
+        <span class="option-check radio-check"></span>
+        Complete beginner — never trained before
+      </label>
+      <label class="option-card" onclick="selectRadio(this, 'experienceGrid')">
+        <input type="radio" name="experience" value="Some experience">
+        <span class="option-check radio-check"></span>
+        Some experience — trained on and off
+      </label>
+      <label class="option-card" onclick="selectRadio(this, 'experienceGrid')">
+        <input type="radio" name="experience" value="Regular trainer">
+        <span class="option-check radio-check"></span>
+        Regular trainer — been consistent for 6+ months
+      </label>
+      <label class="option-card" onclick="selectRadio(this, 'experienceGrid')">
+        <input type="radio" name="experience" value="Experienced lifter">
+        <span class="option-check radio-check"></span>
+        Experienced lifter — years of strength training
+      </label>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 7: Big 3 Lifts -->
+  <div class="step" data-step="7">
+    <div class="step-question">Do you know your current lifts?</div>
+    <div class="step-sub">If you have done bench press, squat, or deadlift before, enter your best weight. Leave blank if unsure — no stress.</div>
+    <div class="lift-row">
+      <label>Bench</label>
+      <input type="number" id="liftBench" placeholder="—" inputmode="numeric">
+      <span class="unit">kg</span>
+    </div>
+    <div class="lift-row">
+      <label>Squat</label>
+      <input type="number" id="liftSquat" placeholder="—" inputmode="numeric">
+      <span class="unit">kg</span>
+    </div>
+    <div class="lift-row">
+      <label>Deadlift</label>
+      <input type="number" id="liftDeadlift" placeholder="—" inputmode="numeric">
+      <span class="unit">kg</span>
+    </div>
+    <button class="skip-link" onclick="nextStep()">Never lifted — skip this</button>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 8: Chin Ups + Push Ups -->
+  <div class="step" data-step="8">
+    <div class="step-question">Chin ups and push ups</div>
+    <div class="step-sub">Can you do these unassisted? If so, roughly how many in a row?</div>
+    <div class="input-group">
+      <label class="input-label">Unassisted chin ups</label>
+      <div class="option-grid" id="chinGrid" style="margin-bottom:8px;">
+        <label class="option-card" onclick="selectRadio(this, 'chinGrid'); document.getElementById('chinCount').style.display='none';">
+          <input type="radio" name="chinups" value="0">
+          <span class="option-check radio-check"></span>
+          Not yet
+        </label>
+        <label class="option-card" onclick="selectRadio(this, 'chinGrid'); document.getElementById('chinCount').style.display='block';">
+          <input type="radio" name="chinups" value="yes">
+          <span class="option-check radio-check"></span>
+          Yes
+        </label>
+      </div>
+      <input type="number" id="chinCount" placeholder="How many?" inputmode="numeric" style="display:none; margin-bottom:20px;">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Push ups (full, on toes)</label>
+      <div class="option-grid" id="pushGrid" style="margin-bottom:8px;">
+        <label class="option-card" onclick="selectRadio(this, 'pushGrid'); document.getElementById('pushCount').style.display='none';">
+          <input type="radio" name="pushups" value="0">
+          <span class="option-check radio-check"></span>
+          Not yet
+        </label>
+        <label class="option-card" onclick="selectRadio(this, 'pushGrid'); document.getElementById('pushCount').style.display='block';">
+          <input type="radio" name="pushups" value="yes">
+          <span class="option-check radio-check"></span>
+          Yes
+        </label>
+      </div>
+      <input type="number" id="pushCount" placeholder="How many?" inputmode="numeric" style="display:none;">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- STEP 9: Anything else -->
+  <div class="step" data-step="9">
+    <div class="step-question">Anything else we should know?</div>
+    <div class="step-sub">Medical conditions, medications, dietary requirements, or just something you want your coach to know.</div>
+    <div class="input-group">
+      <textarea id="notes" placeholder="Type here or skip if nothing comes to mind..."></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" onclick="submitForm()" id="btnSubmit">Submit</button>
+    </div>
+  </div>
+
+  <!-- STEP 10: Thank You -->
+  <div class="step" data-step="10">
+    <div class="thankyou">
+      <div class="thankyou-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>You're all set!</h2>
+      <p>Thanks <span id="thankName"></span>— your coach now has everything they need to get you started.</p>
+
+      <div class="note-box">
+        <p><strong>Next step:</strong> Download the RTB Membership app and purchase your 21-Day Strength Reset through the app.</p>
+        <p style="margin-top:8px;">Your 21 days won't start until your first session is booked — so no rush.</p>
+      </div>
+
+      <div class="app-links">
+        <a href="https://apps.apple.com/au/app/raise-the-bar/id1596965257" target="_blank" class="app-link">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store (iPhone)
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.onefitstop.raisethebar&hl=en" target="_blank" class="app-link">
+          <svg viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm.91-.91L19.64 12 17.72 9.79l-2.27 2.27 2.27 2.15zM6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z"/></svg>
+          Google Play (Android)
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 9; // 10 is thank you, not counted
+const formData = {};
+
+function updateProgress() {
+  const pct = ((currentStep - 1) / totalSteps) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelector(`[data-step="${n}"]`).classList.add('active');
+  currentStep = n;
+  updateProgress();
+  window.scrollTo(0, 0);
+}
+
+function nextStep() {
+  // Validate current step
+  if (currentStep === 1) {
+    const v = document.getElementById('firstName').value.trim();
+    if (!v) { document.getElementById('firstName').focus(); return; }
+    formData.firstName = v;
+  }
+  if (currentStep === 2) {
+    const v = document.getElementById('email').value.trim();
+    if (!v || !v.includes('@')) { document.getElementById('email').focus(); return; }
+    formData.email = v.toLowerCase();
+  }
+  if (currentStep === 3) {
+    if (!formData.location) return;
+  }
+  if (currentStep === 4) {
+    const selected = document.querySelectorAll('#goalsGrid .option-card.selected');
+    formData.goals = Array.from(selected).map(c => c.dataset.value);
+    const other = document.getElementById('goalOther').value.trim();
+    if (other) formData.goals.push(other);
+  }
+  if (currentStep === 5) {
+    formData.injuries = document.getElementById('injuries').value.trim() || 'None';
+  }
+  if (currentStep === 6) {
+    const sel = document.querySelector('#experienceGrid input:checked');
+    formData.experience = sel ? sel.value : 'Not specified';
+  }
+  if (currentStep === 7) {
+    formData.startingLifts = {
+      bench: parseFloat(document.getElementById('liftBench').value) || null,
+      squat: parseFloat(document.getElementById('liftSquat').value) || null,
+      deadlift: parseFloat(document.getElementById('liftDeadlift').value) || null,
+    };
+  }
+  if (currentStep === 8) {
+    const chinSel = document.querySelector('#chinGrid input:checked');
+    if (chinSel && chinSel.value === 'yes') {
+      formData.chinUps = parseInt(document.getElementById('chinCount').value) || 'Yes (count not specified)';
+    } else if (chinSel) {
+      formData.chinUps = 0;
+    } else {
+      formData.chinUps = 'Not specified';
+    }
+    const pushSel = document.querySelector('#pushGrid input:checked');
+    if (pushSel && pushSel.value === 'yes') {
+      formData.pushUps = parseInt(document.getElementById('pushCount').value) || 'Yes (count not specified)';
+    } else if (pushSel) {
+      formData.pushUps = 0;
+    } else {
+      formData.pushUps = 'Not specified';
+    }
+  }
+
+  showStep(currentStep + 1);
+}
+
+function prevStep() {
+  if (currentStep > 1) showStep(currentStep - 1);
+}
+
+function selectLocation(el, loc) {
+  document.querySelectorAll('.location-pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  formData.location = loc;
+  document.getElementById('btn3').disabled = false;
+}
+
+function toggleGoal(card) {
+  card.classList.toggle('selected');
+}
+
+function toggleOption(card) {
+  card.classList.toggle('selected');
+}
+
+function selectRadio(card, gridId) {
+  document.querySelectorAll(`#${gridId} .option-card`).forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  card.querySelector('input').checked = true;
+}
+
+async function submitForm() {
+  // Collect final step
+  formData.notes = document.getElementById('notes').value.trim() || 'None';
+  formData.submittedAt = new Date().toISOString();
+  formData.submittedDate = new Date().toLocaleDateString('en-AU');
+
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
+
+  // Save to GitHub
+  try {
+    const REPO = 'joshcurryrtb/rtb-onboarding';
+    const token = localStorage.getItem('gh_token');
+    const filename = `responses/${formData.email.replace(/[^a-z0-9]/g, '_')}.json`;
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(formData, null, 2))));
+
+    if (token) {
+      // Try to get existing file SHA first
+      let sha = null;
+      try {
+        const existing = await fetch(`https://api.github.com/repos/${REPO}/contents/${filename}`, {
+          headers: { 'Authorization': `token ${token}` }
+        });
+        if (existing.ok) {
+          const data = await existing.json();
+          sha = data.sha;
+        }
+      } catch(e) {}
+
+      const body = {
+        message: `Onboarding: ${formData.firstName} (${formData.email})`,
+        content: content,
+      };
+      if (sha) body.sha = sha;
+
+      await fetch(`https://api.github.com/repos/${REPO}/contents/${filename}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+    }
+  } catch(e) {
+    console.log('GitHub save skipped:', e);
+  }
+
+  // Also store locally
+  try {
+    const all = JSON.parse(localStorage.getItem('rtb_onboarding') || '[]');
+    all.push(formData);
+    localStorage.setItem('rtb_onboarding', JSON.stringify(all));
+  } catch(e) {}
+
+  // Show thank you
+  document.getElementById('thankName').textContent = formData.firstName + ' ';
+  showStep(10);
+  document.getElementById('progressBar').style.width = '100%';
+}
+
+// Enter key advances
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && currentStep < 10) {
+    e.preventDefault();
+    if (currentStep === 9) submitForm();
+    else nextStep();
+  }
+});
+
+updateProgress();
+</script>
+
+</body>
+</html>
