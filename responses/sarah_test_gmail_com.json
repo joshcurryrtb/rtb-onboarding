@@ -5,7 +5,7 @@
   "goals": ["Lose body fat", "Get stronger", "Feel more confident"],
   "injuries": "None",
   "experience": "Complete beginner — never trained before",
-  "startingLifts": { "bench": null, "squat": null, "deadlift": null },
+  "startingLifts": { "bench": 20, "squat": 30, "deadlift": 40 },
   "chinUps": 0,
   "pushUps": 3,
   "notes": "Never done strength training. Want to feel strong and confident. Available Mon/Wed/Fri mornings.",
