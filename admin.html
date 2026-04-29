@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RTB Onboarding — Responses</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #FF0028;
+  --black: #111;
+  --white: #fff;
+  --grey-light: #f5f5f5;
+  --grey-mid: #e0e0e0;
+  --grey-text: #666;
+}
+html, body {
+  font-family: 'Epilogue', sans-serif;
+  background: var(--grey-light);
+  color: var(--black);
+  min-height: 100vh;
+}
+.top-bar {
+  background: var(--black);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-bar h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.top-bar .count {
+  font-size: 14px;
+  opacity: 0.6;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--grey-text);
+  font-size: 16px;
+}
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--grey-text);
+}
+.empty-state h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 2px solid var(--grey-mid);
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: #ccc; }
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+.card-name { font-weight: 800; font-size: 18px; }
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--grey-text);
+}
+.card-location {
+  background: var(--grey-light);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.card-arrow {
+  font-size: 18px;
+  transition: transform 0.2s;
+  color: var(--grey-text);
+}
+.card.open .card-arrow { transform: rotate(180deg); }
+.card-body { display: none; padding: 0 20px 20px; }
+.card.open .card-body { display: block; }
+.detail-section { margin-bottom: 16px; }
+.detail-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--grey-text);
+  margin-bottom: 4px;
+}
+.detail-value { font-size: 15px; line-height: 1.5; }
+.goals-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+.goal-tag {
+  background: #fff0f2;
+  color: var(--red);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.lifts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.lift-card { background: var(--grey-light); border-radius: 8px; padding: 12px; text-align: center; }
+.lift-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-text); margin-bottom: 4px; }
+.lift-num { font-size: 22px; font-weight: 800; }
+.lift-empty { color: #ccc; font-size: 16px; }
+.bw-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.bw-card { background: var(--grey-light); border-radius: 8px; padding: 12px; text-align: center; }
+.bw-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-text); margin-bottom: 4px; }
+.bw-num { font-size: 18px; font-weight: 800; }
+.divider { border: none; border-top: 1px solid var(--grey-mid); margin: 16px 0; }
+.scoreboard-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 20px;
+  background: var(--black);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.scoreboard-link:hover { background: #333; }
+.setup-box {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  border: 2px solid var(--grey-mid);
+}
+.setup-box h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.setup-box p {
+  font-size: 14px;
+  color: var(--grey-text);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.setup-box input {
+  width: 100%;
+  max-width: 400px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 16px;
+  padding: 14px 16px;
+  border: 2px solid var(--grey-mid);
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+}
+.setup-box input:focus { border-color: var(--red); }
+.setup-box button {
+  display: block;
+  margin: 12px auto 0;
+  padding: 14px 32px;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>Onboarding Responses</h1>
+  <span class="count" id="countLabel"></span>
+</div>
+
+<div class="container" id="main">
+  <div class="loading" id="loadingMsg">Loading responses...</div>
+</div>
+
+<script>
+const REPO = 'joshcurryrtb/rtb-onboarding';
+const TOKEN_KEY = 'gh_token';
+
+function esc(str) {
+  const d = document.createElement('span');
+  d.textContent = str || '';
+  return d.textContent;
+}
+
+function el(tag, attrs, children) {
+  const e = document.createElement(tag);
+  if (attrs) Object.entries(attrs).forEach(([k, v]) => {
+    if (k === 'className') e.className = v;
+    else if (k === 'textContent') e.textContent = v;
+    else if (k === 'onclick') e.addEventListener('click', v);
+    else if (k === 'href') { e.href = v; e.target = '_blank'; }
+    else e.setAttribute(k, v);
+  });
+  if (children) {
+    if (typeof children === 'string') e.textContent = children;
+    else if (Array.isArray(children)) children.forEach(c => { if (c) e.appendChild(c); });
+  }
+  return e;
+}
+
+async function init() {
+  const token = localStorage.getItem(TOKEN_KEY);
+  if (!token) { showSetup(); return; }
+  await loadResponses(token);
+}
+
+function showSetup() {
+  const container = document.getElementById('main');
+  container.textContent = '';
+  const box = el('div', {className: 'setup-box'});
+  box.appendChild(el('h2', {}, 'Connect to GitHub'));
+  box.appendChild(el('p', {}, 'Paste your GitHub token to view responses. This is the same token you use for the business tracker.'));
+  const input = el('input', {type: 'text', id: 'tokenInput', placeholder: 'ghp_xxxxxxxxxxxx'});
+  box.appendChild(input);
+  const btn = el('button', {onclick: function() {
+    const t = document.getElementById('tokenInput').value.trim();
+    if (!t) return;
+    localStorage.setItem(TOKEN_KEY, t);
+    container.textContent = '';
+    container.appendChild(el('div', {className: 'loading'}, 'Loading responses...'));
+    loadResponses(t);
+  }}, 'Connect');
+  box.appendChild(btn);
+  container.appendChild(box);
+}
+
+function showEmpty() {
+  const container = document.getElementById('main');
+  container.textContent = '';
+  const wrap = el('div', {className: 'empty-state'});
+  wrap.appendChild(el('h2', {}, 'No responses yet'));
+  wrap.appendChild(el('p', {}, 'Share your onboarding form link and responses will appear here.'));
+  container.appendChild(wrap);
+  document.getElementById('countLabel').textContent = '0 responses';
+}
+
+async function loadResponses(token) {
+  try {
+    const res = await fetch('https://api.github.com/repos/' + REPO + '/contents/responses', {
+      headers: { 'Authorization': 'token ' + token }
+    });
+    if (res.status === 404) { showEmpty(); return; }
+    if (!res.ok) { showSetup(); return; }
+
+    const files = await res.json();
+    const jsonFiles = files.filter(function(f) { return f.name.endsWith('.json'); });
+    if (jsonFiles.length === 0) { showEmpty(); return; }
+
+    const responses = await Promise.all(jsonFiles.map(async function(f) {
+      const r = await fetch(f.download_url);
+      return r.json();
+    }));
+
+    responses.sort(function(a, b) { return new Date(b.submittedAt) - new Date(a.submittedAt); });
+    document.getElementById('countLabel').textContent = responses.length + ' response' + (responses.length !== 1 ? 's' : '');
+    renderResponses(responses);
+  } catch(e) {
+    console.error(e);
+    const container = document.getElementById('main');
+    container.textContent = '';
+    container.appendChild(el('div', {className: 'loading'}, 'Something went wrong. Try refreshing.'));
+  }
+}
+
+function formatBW(val) {
+  if (val === 0) return 'Not yet';
+  if (typeof val === 'number') return val + ' reps';
+  if (typeof val === 'string' && val.includes('Yes')) return val;
+  return val || '\u2014';
+}
+
+function buildCard(r) {
+  const card = el('div', {className: 'card'});
+
+  // Header
+  const header = el('div', {className: 'card-header', onclick: function() { card.classList.toggle('open'); }});
+  const left = el('div');
+  left.appendChild(el('div', {className: 'card-name'}, esc(r.firstName || 'Unknown')));
+  const meta = el('div', {className: 'card-meta'});
+  meta.appendChild(el('span', {}, esc(r.email || '')));
+  meta.appendChild(el('span', {}, r.submittedDate || ''));
+  left.appendChild(meta);
+  header.appendChild(left);
+
+  const right = el('div', {style: 'display:flex;align-items:center;gap:10px'});
+  right.appendChild(el('span', {className: 'card-location'}, esc(r.location || '\u2014')));
+  right.appendChild(el('span', {className: 'card-arrow'}, '\u25BC'));
+  header.appendChild(right);
+  card.appendChild(header);
+
+  // Body
+  const body = el('div', {className: 'card-body'});
+
+  // Goals
+  const goalsSection = el('div', {className: 'detail-section'});
+  goalsSection.appendChild(el('div', {className: 'detail-label'}, 'Goals'));
+  const goalsWrap = el('div', {className: 'goals-wrap'});
+  (r.goals || []).forEach(function(g) {
+    goalsWrap.appendChild(el('span', {className: 'goal-tag'}, esc(g)));
+  });
+  goalsSection.appendChild(goalsWrap);
+  body.appendChild(goalsSection);
+
+  // Injuries
+  const injSection = el('div', {className: 'detail-section'});
+  injSection.appendChild(el('div', {className: 'detail-label'}, 'Injuries / Limitations'));
+  injSection.appendChild(el('div', {className: 'detail-value'}, esc(r.injuries || 'None')));
+  body.appendChild(injSection);
+
+  // Experience
+  const expSection = el('div', {className: 'detail-section'});
+  expSection.appendChild(el('div', {className: 'detail-label'}, 'Training Background'));
+  expSection.appendChild(el('div', {className: 'detail-value'}, esc(r.experience || 'Not specified')));
+  body.appendChild(expSection);
+
+  body.appendChild(el('hr', {className: 'divider'}));
+
+  // Lifts
+  const liftSection = el('div', {className: 'detail-section'});
+  liftSection.appendChild(el('div', {className: 'detail-label'}, 'Starting Lifts'));
+  const liftsGrid = el('div', {className: 'lifts-grid'});
+  ['Bench', 'Squat', 'Deadlift'].forEach(function(name) {
+    const key = name.toLowerCase();
+    const val = r.startingLifts ? r.startingLifts[key] : null;
+    const lc = el('div', {className: 'lift-card'});
+    lc.appendChild(el('div', {className: 'lift-name'}, name));
+    lc.appendChild(el('div', {className: 'lift-num' + (val ? '' : ' lift-empty')}, val ? val + ' kg' : '\u2014'));
+    liftsGrid.appendChild(lc);
+  });
+  liftSection.appendChild(liftsGrid);
+  body.appendChild(liftSection);
+
+  // Bodyweight exercises
+  const bwSection = el('div', {className: 'detail-section'});
+  bwSection.appendChild(el('div', {className: 'detail-label'}, 'Bodyweight Exercises'));
+  const bwGrid = el('div', {className: 'bw-grid'});
+  [['Chin Ups', r.chinUps], ['Push Ups', r.pushUps]].forEach(function(pair) {
+    const bwc = el('div', {className: 'bw-card'});
+    bwc.appendChild(el('div', {className: 'bw-name'}, pair[0]));
+    bwc.appendChild(el('div', {className: 'bw-num'}, formatBW(pair[1])));
+    bwGrid.appendChild(bwc);
+  });
+  bwSection.appendChild(bwGrid);
+  body.appendChild(bwSection);
+
+  // Notes
+  if (r.notes && r.notes !== 'None') {
+    body.appendChild(el('hr', {className: 'divider'}));
+    const noteSection = el('div', {className: 'detail-section'});
+    noteSection.appendChild(el('div', {className: 'detail-label'}, 'Additional Notes'));
+    noteSection.appendChild(el('div', {className: 'detail-value'}, esc(r.notes)));
+    body.appendChild(noteSection);
+  }
+
+  body.appendChild(el('hr', {className: 'divider'}));
+
+  // Scoreboard link
+  const sbLink = el('a', {
+    className: 'scoreboard-link',
+    href: 'https://joshcurryrtb.github.io/rtb-leaderboard/#profile/' + encodeURIComponent(r.email || '')
+  }, 'View on Scoreboard');
+  body.appendChild(sbLink);
+
+  card.appendChild(body);
+  return card;
+}
+
+function renderResponses(responses) {
+  const container = document.getElementById('main');
+  container.textContent = '';
+  responses.forEach(function(r) {
+    container.appendChild(buildCard(r));
+  });
+}
+
+init();
+</script>
+</body>
+</html>
