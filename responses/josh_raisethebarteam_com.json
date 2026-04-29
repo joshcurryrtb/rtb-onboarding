@@ -1,0 +1,14 @@
+{
+  "firstName": "Josh",
+  "email": "josh@raisethebarteam.com",
+  "location": "Windsor",
+  "goals": ["Get stronger", "Build muscle"],
+  "injuries": "None",
+  "experience": "Experienced lifter — years of strength training",
+  "startingLifts": { "bench": 100, "squat": 140, "deadlift": 180 },
+  "chinUps": 8,
+  "pushUps": 30,
+  "notes": "None",
+  "submittedAt": "2026-01-01T00:00:00.000Z",
+  "submittedDate": "01/01/2026"
+}
