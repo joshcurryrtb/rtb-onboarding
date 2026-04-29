@@ -1,0 +1,14 @@
+{
+  "firstName": "Cass",
+  "email": "cass1002@gmail.com",
+  "location": "Windsor",
+  "goals": ["Get stronger", "Lose body fat", "Feel more confident"],
+  "injuries": "Mild lower back pain — previous disc bulge, cleared by physio",
+  "experience": "Some experience — trained on and off",
+  "startingLifts": { "bench": 40, "squat": 55, "deadlift": 70 },
+  "chinUps": 0,
+  "pushUps": 5,
+  "notes": "Mum of 2, available mornings only",
+  "submittedAt": "2026-04-29T03:45:00.000Z",
+  "submittedDate": "29/04/2026"
+}
