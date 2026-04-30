@@ -1,0 +1,25 @@
+{
+  "firstName": "Jess",
+  "email": "jess_t86@hotmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident",
+    "Improve mental health"
+  ],
+  "injuries": "Spine disc herniation in neck, ACL knee reco",
+  "experience": "Experienced lifter",
+  "startingLifts": {
+    "bench": 40,
+    "squat": 60,
+    "deadlift": 90
+  },
+  "chinUps": 4,
+  "pushUps": 20,
+  "notes": "Low blood pressure (get dizzy easily with cardio or not long enough rest between sets)",
+  "submittedAt": "2026-04-30T03:10:00.089Z",
+  "submittedDate": "30/4/2026"
+}
