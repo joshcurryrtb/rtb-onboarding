@@ -1,0 +1,24 @@
+{
+  "firstName": "Lynn",
+  "email": "lynn_m11@hotmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident"
+  ],
+  "injuries": "No",
+  "experience": "Experienced lifter",
+  "startingLifts": {
+    "bench": 35,
+    "squat": null,
+    "deadlift": 40
+  },
+  "chinUps": 0,
+  "pushUps": 5,
+  "notes": "Now post menopausal and struggling with nutrition side of things. Need a new game plan!",
+  "submittedAt": "2026-04-30T01:24:21.657Z",
+  "submittedDate": "30/4/2026"
+}
