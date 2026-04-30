@@ -1,0 +1,23 @@
+{
+  "firstName": "Kelly",
+  "email": "kosmand248@yahoo.com.au",
+  "location": "Chelsea Heights",
+  "goals": [
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Improve mental health"
+  ],
+  "injuries": "Lower back sensitivity due to historic herniated disc.",
+  "experience": "Experienced lifter",
+  "startingLifts": {
+    "bench": 30,
+    "squat": 50,
+    "deadlift": 50
+  },
+  "chinUps": 0,
+  "pushUps": 20,
+  "notes": "None",
+  "submittedAt": "2026-04-30T00:26:58.504Z",
+  "submittedDate": "30/4/2026"
+}
