@@ -1,0 +1,14 @@
+{
+  "firstName": "Test Member",
+  "email": "testmember.apr30@gmail.com",
+  "location": "Chelsea Heights",
+  "goals": ["Build muscle", "Improve fitness"],
+  "injuries": "None",
+  "experience": "Some experience — trained on and off",
+  "startingLifts": { "bench": 50, "squat": 60, "deadlift": 80 },
+  "chinUps": 0,
+  "pushUps": 10,
+  "notes": "None",
+  "submittedAt": "2026-04-30T10:20:00.000Z",
+  "submittedDate": "30/04/2026"
+}
