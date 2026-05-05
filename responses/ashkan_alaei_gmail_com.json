@@ -1,0 +1,25 @@
+{
+  "firstName": "Ashkan",
+  "email": "ashkan.alaei@gmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident",
+    "Improve mental health"
+  ],
+  "injuries": "None",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 5,
+  "pushUps": 15,
+  "notes": "None",
+  "submittedAt": "2026-05-05T23:17:04.259Z",
+  "submittedDate": "6/5/2026"
+}
