@@ -1,0 +1,22 @@
+{
+  "firstName": "Mon",
+  "email": "monique.robin@gmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Build muscle",
+    "Get stronger",
+    "Feel more confident"
+  ],
+  "injuries": "Haven’t tested my body enough recently to confirm but in the past (from overuse!): chronic hip tendinitis/bursitis (hopefully won’t be a problem w strength-type training), bicep tendonitis and forearm tendonopathy!  (All currently dormant!)",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 1,
+  "notes": "None",
+  "submittedAt": "2026-05-05T21:36:18.874Z",
+  "submittedDate": "6/5/2026"
+}
