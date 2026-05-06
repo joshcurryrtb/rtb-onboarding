@@ -1,12 +1,12 @@
 {
   "firstName": "Joshua",
   "email": "joshuadylancurry@gmail.com",
-  "location": "Windsor",
+  "location": "Chelsea Heights",
   "goals": [
     "Lose body fat"
   ],
-  "injuries": "sf",
-  "experience": "Some experience",
+  "injuries": "None",
+  "experience": "Complete beginner",
   "startingLifts": {
     "bench": 1,
     "squat": 1,
@@ -14,7 +14,7 @@
   },
   "chinUps": 0,
   "pushUps": 0,
-  "notes": "ef",
-  "submittedAt": "2026-04-29T03:40:24.252Z",
-  "submittedDate": "29/04/2026"
+  "notes": "D",
+  "submittedAt": "2026-05-06T22:43:31.549Z",
+  "submittedDate": "07/05/2026"
 }
