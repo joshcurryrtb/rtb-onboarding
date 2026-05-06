@@ -1,20 +1,20 @@
 {
-  "firstName": "G",
+  "firstName": "Joshua",
   "email": "josh@raisethebarteam.com",
   "location": "Windsor",
   "goals": [
-    "Feel more confident"
+    "Build muscle"
   ],
   "injuries": "None",
-  "experience": "Not specified",
+  "experience": "Experienced lifter",
   "startingLifts": {
-    "bench": null,
+    "bench": 1,
     "squat": null,
     "deadlift": null
   },
-  "chinUps": "Yes (count not specified)",
-  "pushUps": 0,
-  "notes": "DGB",
-  "submittedAt": "2026-05-06T22:45:08.401Z",
-  "submittedDate": "07/05/2026"
+  "chinUps": "Not specified",
+  "pushUps": "Yes (count not specified)",
+  "notes": "None",
+  "submittedAt": "2026-05-06T22:46:36.159Z",
+  "submittedDate": "7/5/2026"
 }
