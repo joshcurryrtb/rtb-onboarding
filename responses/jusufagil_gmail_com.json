@@ -1,0 +1,25 @@
+{
+  "firstName": "Jusuf",
+  "email": "jusufagil@gmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident",
+    "Improve mental health",
+    "Disease prevention, and need to develop the habit of regularly doing resistance training"
+  ],
+  "injuries": "Feel some slight discomfort on the left knee but no pain. Walking lunges with dumbbells may be an issue as I can sense a slight 'popping' sensation. My physio said that it may be due to my left leg being weaker than my right.",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": 15,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 5,
+  "pushUps": 20,
+  "notes": "I try to be plant-based.",
+  "submittedAt": "2026-05-06T23:59:40.342Z",
+  "submittedDate": "07/05/2026"
+}
