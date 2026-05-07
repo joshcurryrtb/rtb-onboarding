@@ -1,0 +1,22 @@
+{
+  "firstName": "Coco",
+  "email": "coco.ernestine@gmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger"
+  ],
+  "injuries": "I recently pulled my right hip flexor, however I am 4 weeks into a 6 week physio program and it is feeling much better.",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": "Yes (count not specified)",
+  "notes": "None",
+  "submittedAt": "2026-05-07T21:49:15.295Z",
+  "submittedDate": "08/05/2026"
+}
