@@ -1,0 +1,23 @@
+{
+  "firstName": "Shakira",
+  "email": "shakirajensencreative@gmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Feel more confident",
+    "Improve mental health"
+  ],
+  "injuries": "None",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 0,
+  "notes": "My lower back can be funny at times - I’ve never fully injured it but if I’m not careful it can put me out of the gym for a week or so",
+  "submittedAt": "2026-05-07T21:58:55.423Z",
+  "submittedDate": "8/5/2026"
+}
