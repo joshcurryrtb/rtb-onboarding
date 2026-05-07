@@ -1,0 +1,24 @@
+{
+  "firstName": "Orna",
+  "email": "ornag3@gmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident",
+    "Improve mental health"
+  ],
+  "injuries": "None",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 0,
+  "notes": "None",
+  "submittedAt": "2026-05-07T02:39:59.596Z",
+  "submittedDate": "7/5/2026"
+}
