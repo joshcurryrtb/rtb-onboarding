@@ -1,0 +1,25 @@
+{
+  "firstName": "Andrew",
+  "email": "regthefitz@hotmail.com",
+  "location": "Chelsea Heights",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident",
+    "Sport performance"
+  ],
+  "injuries": "My right knee has been problematic over many years from old sport injuries.",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 8,
+  "pushUps": 15,
+  "notes": "I am on medication for blood pressure. Though my heart health is very good.",
+  "submittedAt": "2026-05-12T03:07:22.081Z",
+  "submittedDate": "12/05/2026"
+}
