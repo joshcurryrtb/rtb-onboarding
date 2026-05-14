@@ -1,0 +1,22 @@
+{
+  "firstName": "Rikki",
+  "email": "funkoolo1@hotmail.com",
+  "location": "Chelsea Heights",
+  "goals": [
+    "Lose body fat",
+    "Improve fitness",
+    "Help with osteoporosis"
+  ],
+  "injuries": "Degenerate lower back - facet joints",
+  "experience": "Complete beginner",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 0,
+  "notes": "None",
+  "submittedAt": "2026-05-14T21:43:16.250Z",
+  "submittedDate": "15/5/2026"
+}
