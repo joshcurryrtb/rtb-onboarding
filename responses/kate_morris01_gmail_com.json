@@ -1,0 +1,23 @@
+{
+  "firstName": "Kate",
+  "email": "kate.morris01@gmail.com",
+  "location": "Chelsea Heights",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness"
+  ],
+  "injuries": "No",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 0,
+  "notes": "Carrying a extra 12 kilos post pregnancy…going to need a lot of help :)",
+  "submittedAt": "2026-05-14T21:42:13.432Z",
+  "submittedDate": "15/5/2026"
+}
