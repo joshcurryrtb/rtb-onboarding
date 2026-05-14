@@ -1,0 +1,23 @@
+{
+  "firstName": "Jason",
+  "email": "barney2932@hotmail.com",
+  "location": "Chelsea Heights",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness"
+  ],
+  "injuries": "Partial tear left acl",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 3,
+  "pushUps": 20,
+  "notes": "None",
+  "submittedAt": "2026-05-14T22:03:21.646Z",
+  "submittedDate": "15/5/2026"
+}
