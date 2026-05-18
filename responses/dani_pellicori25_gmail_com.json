@@ -1,0 +1,24 @@
+{
+  "firstName": "Dani",
+  "email": "dani.pellicori25@gmail.com",
+  "location": "Chelsea Heights",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident"
+  ],
+  "injuries": "None",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 0,
+  "notes": "Type 1 Diabetic- all controlled. Doctor has given go ahead to begin.",
+  "submittedAt": "2026-05-18T01:22:00.329Z",
+  "submittedDate": "18/5/2026"
+}
