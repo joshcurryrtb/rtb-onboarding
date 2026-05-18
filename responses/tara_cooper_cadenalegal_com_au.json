@@ -1,0 +1,23 @@
+{
+  "firstName": "Tara",
+  "email": "tara.cooper@cadenalegal.com.au",
+  "location": "Windsor",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Improve fitness",
+    "Improve mental health"
+  ],
+  "injuries": "None",
+  "experience": "Complete beginner",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 0,
+  "notes": "Vegan and gluten free diet",
+  "submittedAt": "2026-05-18T02:44:57.310Z",
+  "submittedDate": "18/5/2026"
+}
