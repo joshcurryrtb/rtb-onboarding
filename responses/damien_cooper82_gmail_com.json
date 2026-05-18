@@ -1,0 +1,24 @@
+{
+  "firstName": "Damien",
+  "email": "damien.cooper82@gmail.com",
+  "location": "Windsor",
+  "goals": [
+    "Lose body fat",
+    "Build muscle",
+    "Get stronger",
+    "Improve fitness",
+    "Feel more confident"
+  ],
+  "injuries": "Limited mobility of left knee due to motorbike accident in 2006.  Left shoulder a bit off due to shattered collarbone in 2006.",
+  "experience": "Some experience",
+  "startingLifts": {
+    "bench": null,
+    "squat": null,
+    "deadlift": null
+  },
+  "chinUps": 0,
+  "pushUps": 10,
+  "notes": "Vegan for 8 years",
+  "submittedAt": "2026-05-18T01:19:42.430Z",
+  "submittedDate": "18/05/2026"
+}
